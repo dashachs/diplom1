@@ -1,0 +1,27 @@
+body {
+  background-image: url("src/images/bg1.svg");
+  background-size: cover;
+}
+
+#canvas {
+  background-image: url("https://static.vecteezy.com/ti/vecteur-libre/p3/191259-voir-le-vecteur-de-haut-niveau-de-golf-vectoriel.jpg");
+  background-size: cover;
+  background-position-y: 39%;
+  /*border: 1px solid black;*/
+  width: 90%;
+  height: 90%;
+  padding: 0;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 15px;
+}
+
+/*#header {*/
+/*  text-align: center;*/
+
+/*}*/
