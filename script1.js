@@ -38,12 +38,7 @@ for (let i = 1; i < n - 1; i++) {
     }
     y = Math.floor(Math.random() * (height - 200)) + 100;
   } while (
-    circles.some(
-      (circle) =>
-        Math.sqrt((circle.x - x) ** 2 + (circle.y - y) ** 2) <=
-        circle.radius + 100
-    ) || x < circles[i - 1].x
-  );
+    circles.some((circle) => Math.sqrt((circle.x - x) ** 2 + (circle.y - y) ** 2) <= circle.radius + 100) || x < circles[i - 1].x);
   circles.push(
     new Circle(
       x,
@@ -102,8 +97,10 @@ circles.forEach(circle => {
 circles.forEach((circle, index) => {
   canvas.addEventListener('click', function(event) {
     const rect = canvas.getBoundingClientRect();
-    const mouseX = event.clientX - rect.left;
-    const mouseY = event.clientY - rect.top;
+    const canvasWidth = rect.width;
+    const canvasHeight = rect.height;
+    const mouseX = (event.clientX - rect.left) * (width / canvasWidth);
+    const mouseY = (event.clientY - rect.top) * (height / canvasHeight);
     const distance = Math.sqrt((mouseX - circle.x) ** 2 + (mouseY - circle.y) ** 2);
     if (distance <= circle.radius) {
       if (!circle.clicked) {
@@ -128,5 +125,8 @@ circles.forEach((circle, index) => {
           alert(`Вы уже прошли этот уровень, переходите к следующему`);
       }
     }
+    // else {
+    //   alert(`Хз че бля не так`);
+    // }
   });
 });
