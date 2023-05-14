@@ -16,7 +16,9 @@ def generate_problem():
     answer = eval(expression)
     return (expression, answer)
 
-# Генерация и вывод 10 случайных задач
-for i in range(10):
-    problem = generate_problem()
-    print("Задача", i+1, ":", problem[0], "=", problem[1])
+
+def sum_n(n = 10):
+    # Генерация и вывод n случайных задач
+    for i in range(n):
+        problem = generate_problem()
+        print("Задача", i+1, ":", problem[0], "=", problem[1])
