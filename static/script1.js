@@ -1,3 +1,6 @@
+// Импорт нового скрипта
+// import './flask_axaj.js';
+
 // определяем размеры канваса
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -116,7 +119,20 @@ circles.forEach((circle, index) => {
           context.lineWidth = 7;
           context.strokeStyle = '#26580f';
           context.stroke();
-          alert(`Тут будет пример!`);
+          // alert(`Тут будет пример!`);
+          // AJAX-запрос к серверу Flask
+          $.ajax({
+            url: '/func',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+              // Обновление содержимого алерта с возвращаемым значением task
+              alert(response.task);
+            },
+            error: function(error) {
+              console.log(error);
+            }
+          });
         } else {
           alert(`Вы не можете перейти к этому уровню, пока не пройдете предыдущие`);
         }

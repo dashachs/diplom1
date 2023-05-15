@@ -58,18 +58,20 @@ def generate_fraction(n):
     # fraction = f"({numerator_str})/({denominator_str})"
     # fraction_result = sum(numerator) / sum(denominator)
 
-    fraction_print = f"{numerator_str}{' ' * (max(len(denominator_str) - len(numerator_str), 0) + 3)}{result_numerator}\n{'_' * max(len(numerator_str), len(denominator_str))} = ___\n{denominator_str}{' ' * (max(len(numerator_str) - len(denominator_str), 0) + 3)}{result_denominator}"
+    fraction_with_result_print = f"{numerator_str}{' ' * (max(len(denominator_str) - len(numerator_str), 0) + 3)}{result_numerator}\n{'_' * max(len(numerator_str), len(denominator_str))} = ___\n{denominator_str}{' ' * (max(len(numerator_str) - len(denominator_str), 0) + 3)}{result_denominator}"
+    fraction_print = f"{numerator_str}\n{'_' * max(len(numerator_str), len(denominator_str))}\n{denominator_str}"
     actual_fraction_print = f"{new_numerator_str}{' ' * (max(len(new_denominator_str) - len(new_numerator_str), 0) + 3)}{final_numerator}\n{'_' * max(len(new_numerator_str), len(new_denominator_str))} = ___\n{new_denominator_str}{' ' * (max(len(new_numerator_str) - len(new_denominator_str), 0) + 3)}{final_denominator}"
 
     # print(fraction_print)
     # print()
     print(actual_fraction_print)
     print()
+    return fraction_print
     # print("___________________________")
 
 
-def mul_n(n=5):
-    # количество чисел в числителе и знаменателе
-    for i in range(5):
-        print(f"Задача {i + 1}:")
-        generate_fraction(n)
+# def mul_n(n=5):
+#     # количество чисел в числителе и знаменателе
+#     for i in range(5):
+#         print(f"Задача {i + 1}:")
+#         generate_fraction(n)
