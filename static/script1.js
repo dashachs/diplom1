@@ -7,6 +7,7 @@ const height = window.innerHeight;
 
 // получаем элемент канваса и устанавливаем его размеры
 const canvas = document.getElementById('canvas');
+const popupWindow = document.getElementById('popup-window');
 canvas.width = width;
 canvas.height = height;
 
@@ -108,41 +109,66 @@ circles.forEach((circle, index) => {
     if (distance <= circle.radius) {
       if (!circle.clicked) {
         if (index === 0 || circles[index - 1].clicked) {
-          circle.clicked = true;
-          circle.radius = 50
-          circle.color = '#378805'
-          // circle.color = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-          context.beginPath();
-          context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-          context.fillStyle = circle.color;
-          context.fill();
-          context.lineWidth = 7;
-          context.strokeStyle = '#26580f';
-          context.stroke();
-          // alert(`Тут будет пример!`);
-          // AJAX-запрос к серверу Flask
+          popupWindow.style.display = 'block';
+
           $.ajax({
             url: '/func',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-              // Обновление содержимого алерта с возвращаемым значением task
               alert(response.task);
+
+              // Добавляем обработчик клика на кнопку "Закрыть"
+              document.getElementById('close-button').addEventListener('click', function() {
+                // Здесь выполняем действия при нажатии на кнопку "Закрыть"
+                circle.clicked = true;
+                circle.radius = 50;
+                circle.color = '#378805';
+                context.beginPath();
+                context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                context.fillStyle = circle.color;
+                context.fill();
+                context.lineWidth = 7;
+                context.strokeStyle = '#26580f';
+                context.stroke();
+
+                popupWindow.style.display = 'none'; // Закрыть окно
+              });
+
+              setTimeout(function() {
+                if (!circle.clicked) {
+                  // Выполняем код после истечения 5-секундного таймера, только если круг не был уже кликнут
+                  // circle.clicked = true;
+                  circle.radius = 45;
+                  circle.color = '#883705';
+                  context.beginPath();
+                  context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                  context.fillStyle = circle.color;
+                  context.fill();
+                  context.lineWidth = 7;
+                  context.strokeStyle = '#58260f';
+                  context.stroke();
+
+                  popupWindow.style.display = 'none'; // Закрыть окно
+                }
+              }, 5000); // Задержка в 5 секунд
             },
             error: function(error) {
               console.log(error);
             }
           });
         } else {
-          alert(`Вы не можете перейти к этому уровню, пока не пройдете предыдущие`);
+          alert('Вы не можете перейти к этому уровню, пока не пройдете предыдущие');
         }
-      }
-      else {
-          alert(`Вы уже прошли этот уровень, переходите к следующему`);
+      } else {
+        alert('Вы уже прошли этот уровень, переходите к следующему');
       }
     }
-    // else {
-    //   alert(`Хз че бля не так`);
-    // }
   });
+});
+
+document.addEventListener('click', function(event) {
+  if (event.target !== canvas && event.target !== popupWindow) {
+    popupWindow.style.display = 'none';
+  }
 });

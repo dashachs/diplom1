@@ -21,7 +21,42 @@ body {
   border-radius: 15px;
 }
 
-/*#header {*/
-/*  text-align: center;*/
+.popup-window {
+  position: absolute;
+  height: 50%;
+  width: 50%;
+  padding: 0;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; /* Убедитесь, что значение z-index достаточно высокое */
+  display: none;
+  background-color: rgba(190, 255, 190, 0.9); /* Прозрачный фон */
+  border-radius: 15px;
+}
 
-/*}*/
+#popup-window-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  color: #125634;
+}
+
+.button {
+  display: block;
+  /*margin: 20px auto 0;*/
+}
+
+#close-button {
+  background-color: #125634;
+  position: absolute;
+  margin-bottom: 10%;
+  margin-right: 50%;
+  margin-left: 50%;
+  color: #fff; /* Белый цвет текста */
+  /*padding: 10px 20px;*/
+  border: none;
+  border-radius: 5px;
+}

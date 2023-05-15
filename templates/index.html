@@ -5,9 +5,15 @@
     <title>Пни</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/static/style1.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-      <canvas id="canvas"></canvas>
+    <canvas id="canvas"></canvas>
+    <div id="popup-window" class="popup-window">
+      <p id="popup-window-text" class="text">Хуй настенный</p>
+      <button id="close-button" class="btn btn-primary">Закрыть</button>
+    </div>
 
     <script src="/static/script1.js"></script>
 <!--    <script src="{{ url_for('static', filename='script1.js') }}"></script>-->
