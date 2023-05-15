@@ -40,7 +40,7 @@ body {
 #popup-window-text {
   text-align: center;
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 40px;
   color: #125634;
 }
 
@@ -60,3 +60,8 @@ body {
   border: none;
   border-radius: 5px;
 }
+
+/*.mathjax {*/
+/*  font-size: 50px; !* Установите нужный размер шрифта *!*/
+/*}*/
+

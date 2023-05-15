@@ -153,7 +153,7 @@ circles.forEach((circle, index) => {
 
                   popupWindow.style.display = 'none'; // Закрыть окно
                 }
-              }, 5000); // Задержка в 5 секунд
+              }, 60000); // Задержка в минуту
             },
             error: function(error) {
               console.log(error);
