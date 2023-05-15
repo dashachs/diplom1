@@ -109,14 +109,16 @@ circles.forEach((circle, index) => {
     if (distance <= circle.radius) {
       if (!circle.clicked) {
         if (index === 0 || circles[index - 1].clicked) {
-          popupWindow.style.display = 'block';
 
           $.ajax({
             url: '/func',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-              alert(response.task);
+              // alert(response.task);
+              popupWindow.style.display = 'block';
+              document.getElementById('popup-window-text').innerHTML = response.task;
+              MathJax.Hub.Queue(["Typeset", MathJax.Hub, "popup-window-text"]);
 
               // Добавляем обработчик клика на кнопку "Закрыть"
               document.getElementById('close-button').addEventListener('click', function() {

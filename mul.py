@@ -31,8 +31,8 @@ def generate_fraction(n):
             powers_denominator[i] -= 1
             powers_numerator[j] += 1
 
-    numerator_str = ' * '.join(f"{num}^{power}" for num, power in zip(numbers, powers_numerator))
-    denominator_str = ' * '.join(f"{num}^{power}" for num, power in zip(denominator, powers_denominator))
+    numerator_str = ' \cdot '.join(f"{num}^{{{power}}}" for num, power in zip(numbers, powers_numerator))
+    denominator_str = ' \cdot '.join(f"{num}^{{{power}}}" for num, power in zip(denominator, powers_denominator))
 
     # numerator = [num ** power for num, power in zip(numerator, powers_numerator)]  # возводим каждое число в числителе в соответствующую степень
     # denominator = [num ** power for num, power in zip(denominator, powers_denominator)]  # возводим каждое число в знаменателе в соответствующую степень
@@ -59,7 +59,7 @@ def generate_fraction(n):
     # fraction_result = sum(numerator) / sum(denominator)
 
     fraction_with_result_print = f"{numerator_str}{' ' * (max(len(denominator_str) - len(numerator_str), 0) + 3)}{result_numerator}\n{'_' * max(len(numerator_str), len(denominator_str))} = ___\n{denominator_str}{' ' * (max(len(numerator_str) - len(denominator_str), 0) + 3)}{result_denominator}"
-    fraction_print = f"{numerator_str}\n{'_' * max(len(numerator_str), len(denominator_str))}\n{denominator_str}"
+    fraction_print = f"\\(\\frac{{{numerator_str}}}{{{denominator_str}}}\\)"
     actual_fraction_print = f"{new_numerator_str}{' ' * (max(len(new_denominator_str) - len(new_numerator_str), 0) + 3)}{final_numerator}\n{'_' * max(len(new_numerator_str), len(new_denominator_str))} = ___\n{new_denominator_str}{' ' * (max(len(new_numerator_str) - len(new_denominator_str), 0) + 3)}{final_denominator}"
 
     # print(fraction_print)
