@@ -37,6 +37,43 @@ body {
   border-radius: 15px;
 }
 
+.float-container {
+    /*border: 3px solid #fff;*/
+    padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.float-child-1 {
+  width: 65%;
+  float: left;
+  padding: 20px;
+  /*margin-top: 10%;*/
+  border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.float-child-2 {
+  width: 35%;
+  float: left;
+  padding: 20px;
+  /*margin-top: 10%;*/
+  border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caption-text {
+  margin-top: 2%;
+  text-align: center;
+  font-size: 40px;
+  color: #125634;
+}
+
 #popup-window-text {
   text-align: center;
   margin-top: 20px;
@@ -46,22 +83,19 @@ body {
 
 .button {
   display: block;
-  /*margin: 20px auto 0;*/
+  /*margin: 20px auto 20px;*/
+  line-height: normal;
 }
 
 #close-button {
   background-color: #125634;
-  position: absolute;
-  margin-bottom: 10%;
-  margin-right: 50%;
-  margin-left: 50%;
+  position: relative;
+  /*margin-bottom: 10%;*/
+  /*margin-right: 50%;*/
+  /*margin-left: 50%;*/
   color: #fff; /* Белый цвет текста */
   /*padding: 10px 20px;*/
   border: none;
   border-radius: 5px;
 }
-
-/*.mathjax {*/
-/*  font-size: 50px; !* Установите нужный размер шрифта *!*/
-/*}*/
 
