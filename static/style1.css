@@ -21,7 +21,7 @@ body {
   border-radius: 15px;
 }
 
-.popup-window, .gameOverPopupWindow {
+.popup-window {
   position: absolute;
   height: 50%;
   width: 50%;
@@ -137,6 +137,10 @@ body {
 
 .image-container {
   display: flex; /* Устанавливаем flex-контейнер */
+  margin-top: 5px;
+  /*!*text-align: center;*!*/
+  align-items: center;
+  justify-content: center;
 }
 
 .image-container img {
