@@ -13,23 +13,30 @@
   <body>
     <canvas id="canvas"></canvas>
     <div id="popup-window" class="popup-window">
-        <div class="caption">
-          <p class="caption-text">Решите пример</p>
-        </div>
+      <div class="caption">
+        <p class="caption-text">Решите пример</p>
+      </div>
+
       <div class="float-container">
         <div class="float-child-1">
           <p id="popup-window-text" class="text"></p>
         </div>
 
         <div class="float-child-2">
-<!--      <p id="popup-window-text" class="text">Хуй настенный</p>-->
-          <button id="close-button" class="btn btn-primary">Закрыть</button>
+          <form>
+            <input type="text" id="input1" name="input1" placeholder="Числитель" class="form-input">
+            <hr class="form-divider">
+            <input type="text" id="input2" name="input2" placeholder="Знаменатель" class="form-input">
+          </form>
+          <button type="submit" id="submit-button" class="btn btn-primary">Проверить</button>
         </div>
-
       </div>
+
+      <div id="countdown" class="countdown"></div> <!-- Новый HTML-элемент для обратного отсчета -->
     </div>
 
     <script src="/static/script1.js"></script>
+    <script src="/static/script2.js"></script>
 <!--    <script src="{{ url_for('static', filename='script1.js') }}"></script>-->
   </body>
 </html>

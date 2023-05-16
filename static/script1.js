@@ -120,27 +120,19 @@ circles.forEach((circle, index) => {
               document.getElementById('popup-window-text').innerHTML = response.task;
               MathJax.Hub.Queue(["Typeset", MathJax.Hub, "popup-window-text"]);
 
-              // Добавляем обработчик клика на кнопку "Закрыть"
-              document.getElementById('close-button').addEventListener('click', function() {
-                // Здесь выполняем действия при нажатии на кнопку "Закрыть"
-                circle.clicked = true;
-                circle.radius = 50;
-                circle.color = '#378805';
-                context.beginPath();
-                context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-                context.fillStyle = circle.color;
-                context.fill();
-                context.lineWidth = 7;
-                context.strokeStyle = '#26580f';
-                context.stroke();
+              // Обратный отсчет
+              let remainingTime = 15; // Начальное значение времени в секундах
+              const countdownElement = document.getElementById('countdown');
+              countdownElement.textContent = remainingTime;
 
-                popupWindow.style.display = 'none'; // Закрыть окно
-              });
+              const countdownInterval = setInterval(() => {
+                remainingTime--;
+                countdownElement.textContent = remainingTime;
 
-              setTimeout(function() {
-                if (!circle.clicked) {
-                  // Выполняем код после истечения 5-секундного таймера, только если круг не был уже кликнут
-                  // circle.clicked = true;
+                if (remainingTime <= 0) {
+                  clearInterval(countdownInterval);
+                  // Здесь выполняйте нужные действия после истечения времени
+                  // Например, закройте окно или выполните другую логику
                   circle.radius = 45;
                   circle.color = '#883705';
                   context.beginPath();
@@ -153,7 +145,80 @@ circles.forEach((circle, index) => {
 
                   popupWindow.style.display = 'none'; // Закрыть окно
                 }
-              }, 60000); // Задержка в минуту
+              }, 1000); // Интервал вызова функции каждую секунду
+
+              // Добавляем обработчик клика на кнопку "Закрыть"
+              document.getElementById('submit-button').addEventListener('click', function() {
+                // Здесь выполняем действия при нажатии на кнопку "Закрыть"
+
+                // $('#submit-button').click(function(event) {
+                  event.preventDefault(); // Предотвращение стандартного поведения формы
+
+                var value1 = $('#input1').val();
+                var value2 = $('#input2').val();
+
+                $.ajax({
+                  url: '/my-endpoint',
+                  type: 'POST',
+                  data: {
+                    'input1': value1, // Используйте 'input1' вместо 'value1'
+                    'input2': value2, // Используйте 'input2' вместо 'value2'
+                  },
+                  success: function(response) {
+                    // Обработка успешного ответа от сервера
+                    console.log(response);
+                    if (response.result === false) {
+                      clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
+                      circle.radius = 45;
+                      circle.color = '#883705';
+                      context.beginPath();
+                      context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                      context.fillStyle = circle.color;
+                      context.fill();
+                      context.lineWidth = 7;
+                      context.strokeStyle = '#58260f';
+                      context.stroke();
+
+                      // popupWindow.style.display = 'none'; // Закрыть окно
+                    }
+                    else {
+                      clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
+                      circle.clicked = true;
+                      circle.radius = 50;
+                      circle.color = '#378805';
+                      context.beginPath();
+                      context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                      context.fillStyle = circle.color;
+                      context.fill();
+                      context.lineWidth = 7;
+                      context.strokeStyle = '#26580f';
+                      context.stroke();
+
+                      // popupWindow.style.display = 'none'; // Закрыть окно
+                    }
+                  },
+                  error: function(error) {
+                    // Обработка ошибки AJAX запроса
+                    console.log(error);
+                  }
+                // });
+                });
+
+                // clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
+                // circle.clicked = true;
+                // circle.radius = 50;
+                // circle.color = '#378805';
+                // context.beginPath();
+                // context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                // context.fillStyle = circle.color;
+                // context.fill();
+                // context.lineWidth = 7;
+                // context.strokeStyle = '#26580f';
+                // context.stroke();
+                //
+                popupWindow.style.display = 'none'; // Закрыть окно
+              });
+
             },
             error: function(error) {
               console.log(error);
@@ -170,7 +235,13 @@ circles.forEach((circle, index) => {
 });
 
 document.addEventListener('click', function(event) {
-  if (event.target !== canvas && event.target !== popupWindow) {
+  const rect = canvas.getBoundingClientRect();
+  const canvasWidth = rect.width;
+  const canvasHeight = rect.height;
+  const mouseX = event.clientX - rect.left;
+  const mouseY = event.clientY - rect.top;
+
+  if (mouseX < 0 || mouseX > canvasWidth || mouseY < 0 || mouseY > canvasHeight) {
     popupWindow.style.display = 'none';
   }
 });

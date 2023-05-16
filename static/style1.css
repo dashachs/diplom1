@@ -4,7 +4,7 @@ body {
 }
 
 #canvas {
-  background-image: url("https://static.vecteezy.com/ti/vecteur-libre/p3/191259-voir-le-vecteur-de-haut-niveau-de-golf-vectoriel.jpg");
+  background-image: url("/static/src/images/191259-voir-le-vecteur-de-haut-niveau-de-golf-vectoriel.jpg");
   background-size: cover;
   background-position-y: 39%;
   /*border: 1px solid black;*/
@@ -41,7 +41,7 @@ body {
     /*border: 3px solid #fff;*/
     padding: 20px;
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
   justify-content: center;
 }
 
@@ -52,7 +52,7 @@ body {
   /*margin-top: 10%;*/
   border: 2px solid red;
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
   justify-content: center;
 }
 
@@ -63,8 +63,36 @@ body {
   /*margin-top: 10%;*/
   border: 2px solid red;
   display: flex;
+  flex-direction: column; /* Используем столбчатую ориентацию для формы и кнопки */
   align-items: center;
   justify-content: center;
+}
+
+.form-input {
+  /*margin-bottom: 10px;*/
+  /*padding: 5px;*/
+  width: 100%;
+  border: 2px solid #7ac216;
+  border-radius: 5px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  /*color: #125634;*/
+}
+
+.form-input:focus {
+  border: 2px solid #125634;
+}
+
+.form-divider {
+  border: none;
+  border-top: 2px solid #125634;
+  margin: 10px 0;
+}
+
+#submit-button {
+  margin-top: 20px; /* Добавляем отступ между формой и кнопкой */
+  /*padding-top: 12px;*/
 }
 
 .caption-text {
@@ -74,9 +102,17 @@ body {
   color: #125634;
 }
 
+.countdown {
+  /*margin-top: 2%;*/
+  margin-bottom: 10%;
+  text-align: center;
+  font-size: 30px;
+  color: #561234;
+}
+
 #popup-window-text {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 40px;
   color: #125634;
 }
@@ -87,7 +123,7 @@ body {
   line-height: normal;
 }
 
-#close-button {
+#submit-button {
   background-color: #125634;
   position: relative;
   /*margin-bottom: 10%;*/
