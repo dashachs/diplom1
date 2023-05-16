@@ -135,3 +135,12 @@ body {
   border-radius: 5px;
 }
 
+.image-container {
+  display: flex; /* Устанавливаем flex-контейнер */
+}
+
+.image-container img {
+  width: 30px; /* Ширина картинок */
+  height: 30px; /* Высота картинок */
+  margin-right: 3px; /* Отступ между картинками */
+}
