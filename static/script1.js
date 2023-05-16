@@ -117,7 +117,7 @@ circles.forEach((circle, index) => {
     const distance = Math.sqrt((mouseX - circle.x) ** 2 + (mouseY - circle.y) ** 2);
     if (distance <= circle.radius) {
       if (!circle.clicked || (circle.clicked && !circle.correct)) {
-        if (index === 0 || circles[index - 1].clicked) {
+        if (index === 0 || circles[index - 1].correct) {
           $.ajax({
             url: '/func',
             type: 'GET',
@@ -221,6 +221,8 @@ circles.forEach((circle, index) => {
                 });
                 popupWindow.style.display = 'none'; // Закрыть окно
               });
+                // document.getElementById("fraction-form").reset();
+
             },
             error: function(error) {
               console.log(error);
