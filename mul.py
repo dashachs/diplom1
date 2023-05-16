@@ -66,7 +66,7 @@ def generate_fraction(n):
     # print()
     print(actual_fraction_print)
     print()
-    return [fraction_print, result_numerator, result_denominator]
+    return [fraction_print, final_numerator, final_denominator]
     # print("___________________________")
 
 

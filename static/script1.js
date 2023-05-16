@@ -156,10 +156,15 @@ circles.forEach((circle, index) => {
 
                 var value1 = $('#input1').val();
                 var value2 = $('#input2').val();
+                // var answer = false;
+                // var color = '#ff00ff';
+                // var radius = 55;
+                // var strokeStyle = '#00ffff';
 
                 $.ajax({
                   url: '/my-endpoint',
                   type: 'POST',
+                  async: false,
                   data: {
                     'input1': value1, // Используйте 'input1' вместо 'value1'
                     'input2': value2, // Используйте 'input2' вместо 'value2'
@@ -167,7 +172,7 @@ circles.forEach((circle, index) => {
                   success: function(response) {
                     // Обработка успешного ответа от сервера
                     console.log(response);
-                    if (response.result === false) {
+                    if (response.result === false && !circle.clicked) {
                       clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
                       circle.radius = 45;
                       circle.color = '#883705';
@@ -178,10 +183,7 @@ circles.forEach((circle, index) => {
                       context.lineWidth = 7;
                       context.strokeStyle = '#58260f';
                       context.stroke();
-
-                      // popupWindow.style.display = 'none'; // Закрыть окно
-                    }
-                    else {
+                    } else {
                       clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
                       circle.clicked = true;
                       circle.radius = 50;
@@ -193,32 +195,17 @@ circles.forEach((circle, index) => {
                       context.lineWidth = 7;
                       context.strokeStyle = '#26580f';
                       context.stroke();
-
-                      // popupWindow.style.display = 'none'; // Закрыть окно
                     }
+
+                    popupWindow.style.display = 'none'; // Закрыть окно
                   },
                   error: function(error) {
                     // Обработка ошибки AJAX запроса
                     console.log(error);
                   }
-                // });
                 });
-
-                // clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
-                // circle.clicked = true;
-                // circle.radius = 50;
-                // circle.color = '#378805';
-                // context.beginPath();
-                // context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-                // context.fillStyle = circle.color;
-                // context.fill();
-                // context.lineWidth = 7;
-                // context.strokeStyle = '#26580f';
-                // context.stroke();
-                //
                 popupWindow.style.display = 'none'; // Закрыть окно
               });
-
             },
             error: function(error) {
               console.log(error);
