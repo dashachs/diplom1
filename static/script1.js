@@ -85,7 +85,6 @@ context.lineWidth = 23;
 context.strokeStyle = '#e9ccb1';
 context.stroke();
 
-
 // рисуем круги
 circles.forEach(circle => {
   context.beginPath();
@@ -96,6 +95,14 @@ circles.forEach(circle => {
   context.strokeStyle = '#4c3228';
   context.stroke();
 });
+
+// ===============================================================
+// ===============================================================
+// ===============================================================
+
+let lives_count = 5;
+const livescountElement = document.getElementById('lives');
+livescountElement.textContent = "Жизней осталось:"+lives_count;
 
 // добавляем обработчик клика на каждый круг
 circles.forEach((circle, index) => {
@@ -115,12 +122,11 @@ circles.forEach((circle, index) => {
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-              // alert(response.task);
               popupWindow.style.display = 'block';
               document.getElementById('popup-window-text').innerHTML = response.task;
               MathJax.Hub.Queue(["Typeset", MathJax.Hub, "popup-window-text"]);
 
-              // Обратный отсчет
+              // ТАЙМЕР
               let remainingTime = 15; // Начальное значение времени в секундах
               const countdownElement = document.getElementById('countdown');
               countdownElement.textContent = remainingTime;
@@ -131,8 +137,6 @@ circles.forEach((circle, index) => {
 
                 if (remainingTime <= 0) {
                   clearInterval(countdownInterval);
-                  // Здесь выполняйте нужные действия после истечения времени
-                  // Например, закройте окно или выполните другую логику
                   circle.radius = 45;
                   circle.color = '#883705';
                   context.beginPath();
@@ -142,24 +146,19 @@ circles.forEach((circle, index) => {
                   context.lineWidth = 7;
                   context.strokeStyle = '#58260f';
                   context.stroke();
-
+                  lives_count--;
+                  livescountElement.textContent = "Жизней осталось: " + lives_count;
                   popupWindow.style.display = 'none'; // Закрыть окно
                 }
               }, 1000); // Интервал вызова функции каждую секунду
 
-              // Добавляем обработчик клика на кнопку "Закрыть"
-              document.getElementById('submit-button').addEventListener('click', function() {
-                // Здесь выполняем действия при нажатии на кнопку "Закрыть"
 
-                // $('#submit-button').click(function(event) {
-                  event.preventDefault(); // Предотвращение стандартного поведения формы
+              // Обработчик клика на кнопку "Проверить"
+              document.getElementById('submit-button').addEventListener('click', function() {
+                event.preventDefault(); // Предотвращение стандартного поведения формы
 
                 var value1 = $('#input1').val();
                 var value2 = $('#input2').val();
-                // var answer = false;
-                // var color = '#ff00ff';
-                // var radius = 55;
-                // var strokeStyle = '#00ffff';
 
                 $.ajax({
                   url: '/my-endpoint',
@@ -183,7 +182,10 @@ circles.forEach((circle, index) => {
                       context.lineWidth = 7;
                       context.strokeStyle = '#58260f';
                       context.stroke();
-                    } else {
+                      lives_count--;
+                      livescountElement.textContent = "Жизней осталось: " + lives_count;
+                    }
+                    else {
                       clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
                       circle.clicked = true;
                       circle.radius = 50;
@@ -220,6 +222,12 @@ circles.forEach((circle, index) => {
     }
   });
 });
+
+
+// ===============================================================
+// ===============================================================
+// ===============================================================
+
 
 document.addEventListener('click', function(event) {
   const rect = canvas.getBoundingClientRect();
