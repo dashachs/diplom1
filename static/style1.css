@@ -14,7 +14,7 @@ body {
   margin: auto;
   display: block;
   position: absolute;
-  top: 0;
+  top: 20px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -137,7 +137,7 @@ body {
 
 .image-container {
   display: flex; /* Устанавливаем flex-контейнер */
-  margin-top: 5px;
+  margin-top: 10px;
   /*!*text-align: center;*!*/
   align-items: center;
   justify-content: center;
