@@ -118,6 +118,13 @@ circles.forEach((circle, index) => {
     const mouseY = (event.clientY - rect.top) * (height / canvasHeight);
     const distance = Math.sqrt((mouseX - circle.x) ** 2 + (mouseY - circle.y) ** 2);
     if (distance <= circle.radius) {
+      var new_game = true;
+      for (var i = 0; i < circles.length; i++) {
+        if (circles[i].clicked) {
+          new_game = false;
+          break;
+        }
+      }
       if (!circle.clicked || (circle.clicked && !circle.correct)) {
         if (index === 0 || circles[index - 1].correct) {
           $.ajax({
@@ -199,7 +206,7 @@ circles.forEach((circle, index) => {
                         context.strokeStyle = '#58260f';
                         context.stroke();
                       }
-                      if (circle.new) {
+                      if (circle.new || new_game) {
                         lives_count--;
                       }
                       livescountElement.textContent = "Жизней осталось: " + lives_count;
