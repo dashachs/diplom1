@@ -21,6 +21,8 @@ function Circle(x, y, radius, color) {
   this.radius = radius;
   this.color = color;
   this.clicked = false;
+  this.correct = false;
+  this.new = true;
 }
 
 // определяем количество кругов
@@ -114,9 +116,8 @@ circles.forEach((circle, index) => {
     const mouseY = (event.clientY - rect.top) * (height / canvasHeight);
     const distance = Math.sqrt((mouseX - circle.x) ** 2 + (mouseY - circle.y) ** 2);
     if (distance <= circle.radius) {
-      if (!circle.clicked) {
+      if (!circle.clicked || (circle.clicked && !circle.correct)) {
         if (index === 0 || circles[index - 1].clicked) {
-
           $.ajax({
             url: '/func',
             type: 'GET',
@@ -137,15 +138,20 @@ circles.forEach((circle, index) => {
 
                 if (remainingTime <= 0) {
                   clearInterval(countdownInterval);
-                  circle.radius = 45;
-                  circle.color = '#883705';
-                  context.beginPath();
-                  context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-                  context.fillStyle = circle.color;
-                  context.fill();
-                  context.lineWidth = 7;
-                  context.strokeStyle = '#58260f';
-                  context.stroke();
+                  circle.clicked = true;
+                  circle.correct = false;
+                  if (circle.new) {
+                    circle.radius = 45;
+                    circle.color = '#883705';
+                    circle.new = false;
+                    context.beginPath();
+                    context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                    context.fillStyle = circle.color;
+                    context.fill();
+                    context.lineWidth = 7;
+                    context.strokeStyle = '#58260f';
+                    context.stroke();
+                  }
                   lives_count--;
                   livescountElement.textContent = "Жизней осталось: " + lives_count;
                   popupWindow.style.display = 'none'; // Закрыть окно
@@ -171,23 +177,31 @@ circles.forEach((circle, index) => {
                   success: function(response) {
                     // Обработка успешного ответа от сервера
                     console.log(response);
-                    if (response.result === false && !circle.clicked) {
+                    if (response.result === false) {
                       clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
-                      circle.radius = 45;
-                      circle.color = '#883705';
-                      context.beginPath();
-                      context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-                      context.fillStyle = circle.color;
-                      context.fill();
-                      context.lineWidth = 7;
-                      context.strokeStyle = '#58260f';
-                      context.stroke();
-                      lives_count--;
+                      if (!circle.clicked) {
+                        circle.radius = 45;
+                        circle.clicked = true;
+                        circle.correct = false;
+                        circle.new = false;
+                        circle.color = '#883705';
+                        context.beginPath();
+                        context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                        context.fillStyle = circle.color;
+                        context.fill();
+                        context.lineWidth = 7;
+                        context.strokeStyle = '#58260f';
+                        context.stroke();
+                      }
+                      if (circle.new) {
+                        lives_count--;
+                      }
                       livescountElement.textContent = "Жизней осталось: " + lives_count;
                     }
                     else {
                       clearInterval(countdownInterval); // Очищаем интервал обратного отсчета
                       circle.clicked = true;
+                      circle.correct = true;
                       circle.radius = 50;
                       circle.color = '#378805';
                       context.beginPath();
@@ -198,7 +212,6 @@ circles.forEach((circle, index) => {
                       context.strokeStyle = '#26580f';
                       context.stroke();
                     }
-
                     popupWindow.style.display = 'none'; // Закрыть окно
                   },
                   error: function(error) {
