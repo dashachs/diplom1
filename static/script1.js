@@ -105,6 +105,8 @@ circles.forEach(circle => {
 let lives_count = 5;
 const livescountElement = document.getElementById('lives');
 livescountElement.textContent = "Жизней осталось:"+lives_count;
+// Получаем ссылки на все изображения
+var images = document.querySelectorAll('.image-container img');
 
 // добавляем обработчик клика на каждый круг
 circles.forEach((circle, index) => {
@@ -154,6 +156,10 @@ circles.forEach((circle, index) => {
                   }
                   lives_count--;
                   livescountElement.textContent = "Жизней осталось: " + lives_count;
+                  // Проходимся по каждому изображению и меняем его ссылку
+                  for (var i = 0; i < images.length - lives_count; i++) {
+                    images[i].src = "/static/src/images/dead_rose.png";
+                  }
                   popupWindow.style.display = 'none'; // Закрыть окно
                 }
               }, 1000); // Интервал вызова функции каждую секунду
@@ -197,6 +203,11 @@ circles.forEach((circle, index) => {
                         lives_count--;
                       }
                       livescountElement.textContent = "Жизней осталось: " + lives_count;
+
+                  // Проходимся по каждому изображению и меняем его ссылку
+                  for (var i = 0; i < images.length - lives_count; i++) {
+                    images[i].src = "/static/src/images/dead_rose.png";
+                  }
                     }
                     else {
                       clearInterval(countdownInterval); // Очищаем интервал обратного отсчета

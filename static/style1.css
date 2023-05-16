@@ -21,7 +21,7 @@ body {
   border-radius: 15px;
 }
 
-.popup-window {
+.popup-window, .gameOverPopupWindow {
   position: absolute;
   height: 50%;
   width: 50%;
