@@ -27,6 +27,7 @@ function Circle(x, y, radius, color) {
 
 // определяем количество кругов
 const n = 5;
+let finished_counter = 5;
 
 // определяем массив объектов, представляющих круги
 const circles = [];
@@ -229,6 +230,7 @@ circles.forEach((circle, index) => {
                       context.lineWidth = 7;
                       context.strokeStyle = '#26580f';
                       context.stroke();
+                      finished_counter--;
                     }
                     popupWindow.style.display = 'none'; // Закрыть окно
                   },
@@ -239,7 +241,7 @@ circles.forEach((circle, index) => {
                 });
                 popupWindow.style.display = 'none'; // Закрыть окно
               });
-                // document.getElementById("fraction-form").reset();
+                document.getElementById("fraction-form").reset();
 
             },
             error: function(error) {

@@ -4,14 +4,24 @@ from functools import reduce
 
 
 def generate_fraction(n):
-    numbers = [random.randint(3, 10) for _ in range(n)]  # генерируем список чисел от 5 до 25
+    numbers = []
+    sampleSize = 10
+    list_size = 0
+
+    while list_size < n:
+        number = random.randint(3, 10)
+        if number not in numbers:
+            list_size += 1
+            numbers.append(number)
+    # numbers = [random.randint(3, 10) for _ in range(n)]  # генерируем список чисел от 5 до 25
 
     numerator = numbers.copy()  # копируем список чисел в числитель
     denominator = numbers.copy()  # копируем список чисел в знаменатель
 
     powers_numerator = [random.randint(6, 26) for _ in
                         range(len(numerator))]  # генерируем случайные степени для каждого числа в числителе
-    powers_denominator = [random.choice([power, power, power - 1, power + 1, power, power - 2]) for power in
+    powers_denominator = powers_numerator
+    powers_denominator = [random.choice([power, power, power - 1, power + 1, power]) for power in
                           powers_numerator]  # генерируем случайные степени для каждого числа в знаменателе, такие что отличаются от степеней в числителе не более чем на 2
 
     # # Check if powers_numerator and powers_denominator are the same
@@ -31,8 +41,17 @@ def generate_fraction(n):
             powers_denominator[i] -= 1
             powers_numerator[j] += 1
 
+    # Shuffle two lists with same order
+    # Using zip() + * operator + shuffle()
+    temp = list(zip(denominator, powers_denominator))
+    # temp = list(zip(test_list1, test_list2))
+    random.shuffle(temp)
+    denominator_shuffled, powers_denominator_shuffled = zip(*temp)
+    # res1 and res2 come out as tuples, and so must be converted to lists.
+    denominator_shuffled, powers_denominator_shuffled = list(denominator_shuffled), list(powers_denominator_shuffled)
+
     numerator_str = ' \cdot '.join(f"{num}^{{{power}}}" for num, power in zip(numbers, powers_numerator))
-    denominator_str = ' \cdot '.join(f"{num}^{{{power}}}" for num, power in zip(denominator, powers_denominator))
+    denominator_str = ' \cdot '.join(f"{num}^{{{power}}}" for num, power in zip(denominator_shuffled, powers_denominator_shuffled))
 
     # numerator = [num ** power for num, power in zip(numerator, powers_numerator)]  # возводим каждое число в числителе в соответствующую степень
     # denominator = [num ** power for num, power in zip(denominator, powers_denominator)]  # возводим каждое число в знаменателе в соответствующую степень
