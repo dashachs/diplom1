@@ -9,7 +9,7 @@ task = ['', 0, 0]
 def func():
     # Вызов функции func и получение значения task
     global task
-    task = mul.generate_fraction(5)
+    task = mul.generate_fraction_powers(5)
 
     # Вернуть результат в формате JSON
     return jsonify(task=task[0])

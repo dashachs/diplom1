@@ -3,9 +3,8 @@ import random
 from functools import reduce
 
 
-def generate_fraction(n):
+def generate_fraction_powers(n):
     numbers = []
-    sampleSize = 10
     list_size = 0
 
     while list_size < n:
