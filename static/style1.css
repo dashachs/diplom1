@@ -3,6 +3,71 @@ body {
   background-size: cover;
 }
 
+.game {
+  display: none;
+}
+
+.size-settings {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /*padding-bottom: 20px;*/
+}
+
+.lives-settings {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /*padding-bottom: 20px;*/
+}
+
+.lives-form {
+  justify-content: center;
+  align-items: center;
+
+}
+
+.change-text {
+  font-size: 20px;
+  color: #125634;
+  font-weight: bold;
+  text-align: center;
+}
+
+.lives-text {
+  font-size: 20px;
+  color: #125634;
+  font-weight: bold;
+}
+
+.settings-text {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /*padding-top: 20px;*/
+}
+
+.settings {
+  position: absolute;
+  height: 30%;
+  width: 30%;
+  padding-top: 50px;
+  padding-bottom: 60px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; /* Убедитесь, что значение z-index достаточно высокое */
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #a0c293aa; /* Прозрачный фон */
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
 #canvas {
   background-image: url("/static/src/images/191259-voir-le-vecteur-de-haut-niveau-de-golf-vectoriel.jpg");
   background-size: cover;
@@ -50,7 +115,7 @@ body {
   float: left;
   padding: 20px;
   /*margin-top: 10%;*/
-  border: 2px solid red;
+  /*border: 2px solid red;*/
   display: flex;
   /*align-items: center;*/
   justify-content: center;
@@ -61,7 +126,7 @@ body {
   float: left;
   padding: 20px;
   /*margin-top: 10%;*/
-  border: 2px solid red;
+  /*border: 2px solid red;*/
   display: flex;
   flex-direction: column; /* Используем столбчатую ориентацию для формы и кнопки */
   align-items: center;
@@ -107,7 +172,7 @@ body {
   margin-bottom: 10%;
   text-align: center;
   font-size: 30px;
-  color: #561234;
+  color: #b61f45;
 }
 
 #popup-window-text {

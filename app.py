@@ -4,6 +4,7 @@ import mul
 app = Flask(__name__)
 
 task = ['', 0, 0]
+n = 1
 
 @app.route('/func', methods=['GET'])
 def func():

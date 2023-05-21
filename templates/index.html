@@ -11,40 +11,67 @@
 
   </head>
   <body>
-  <div id="lives" class="lives">
-  </div>
-    <div class="image-container">
-      <img src="/static/src/images/rose.png" alt="Rose">
-      <img src="/static/src/images/rose.png" alt="Rose">
-      <img src="/static/src/images/rose.png" alt="Rose">
-      <img src="/static/src/images/rose.png" alt="Rose">
-      <img src="/static/src/images/rose.png" alt="Rose">
+  <div id="settings" class="settings">
+    <div class="settings-text">
+      <p class="change-text">Введите количество уровней:</p>
     </div>
-    <canvas id="canvas"></canvas>
-<!--    <div id="gameOverPopupWindow" class="gameOverPopupWindow">-->
-<!--      Game Over-->
-<!--    </div>-->
-    <div id="popup-window" class="popup-window">
-      <div class="caption">
-        <p class="caption-text">Решите пример</p>
-      </div>
 
-      <div class="float-container">
-        <div class="float-child-1">
-          <p id="popup-window-text" class="text"></p>
+    <div id="size-settings" class="size-settings">
+      <form id="size-form" class="size-form">
+      <input type="number" name="number" id="canvas-size-button" class="canvas-size-button" min="3" max="9" required>
+      <button type="submit">Построить</button>
+    </form>
+    </div>
+
+    <div id="lives-settings" class="lives-settings">
+      <form id="lives-form" class="lives-form">
+      <input type="number" name="number" id="lives-count-button" class="lives-count-button" min="3" max="10" required>
+      <button type="submit">Установить</button>
+    </form>
+    </div>
+  </div>
+
+<!--  <div id="start-page" class="start-page">-->
+<!--&lt;!&ndash;    <div id="size-settings" class="size-settings">&ndash;&gt;-->
+<!--      <p class="confirmation-text"></p>-->
+<!--      <button id="start-button">Начать</button>-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
+
+  <div id="game" class="game">
+      <div class="image-container" id="image-container">
+<!--        <img src="/static/src/images/rose.png" alt="Rose">-->
+<!--        <img src="/static/src/images/rose.png" alt="Rose">-->
+<!--        <img src="/static/src/images/rose.png" alt="Rose">-->
+<!--        <img src="/static/src/images/rose.png" alt="Rose">-->
+<!--        <img src="/static/src/images/rose.png" alt="Rose">-->
+      </div>
+      <canvas id="canvas"></canvas>
+  <!--    <div id="gameOverPopupWindow" class="gameOverPopupWindow">-->
+  <!--      Game Over-->
+  <!--    </div>-->
+      <div id="popup-window" class="popup-window">
+        <div class="caption">
+          <p class="caption-text">Решите пример</p>
         </div>
 
-        <div class="float-child-2">
-          <form id="fraction-form">
-            <input type="text" id="input1" name="input1" placeholder="Числитель" class="form-input">
-            <hr class="form-divider">
-            <input type="text" id="input2" name="input2" placeholder="Знаменатель" class="form-input">
-          </form>
-          <button type="submit" id="submit-button" class="btn btn-primary">Проверить</button>
-        </div>
-      </div>
+        <div class="float-container">
+          <div class="float-child-1">
+            <p id="popup-window-text" class="text"></p>
+          </div>
 
-      <div id="countdown" class="countdown"></div> <!-- Новый HTML-элемент для обратного отсчета -->
+          <div class="float-child-2">
+            <form id="fraction-form">
+              <input type="text" id="input1" name="input1" placeholder="Числитель" class="form-input">
+              <hr class="form-divider">
+              <input type="text" id="input2" name="input2" placeholder="Знаменатель" class="form-input">
+            </form>
+            <button type="submit" id="submit-button" class="btn btn-primary">Проверить</button>
+          </div>
+        </div>
+
+        <div id="countdown" class="countdown"></div> <!-- Новый HTML-элемент для обратного отсчета -->
+      </div>
     </div>
 
     <script src="/static/script1.js"></script>

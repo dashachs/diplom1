@@ -3,6 +3,10 @@ import random
 from functools import reduce
 
 
+# def generate_sum_brackets():
+#
+
+
 def generate_fraction_powers(n):
     numbers = []
     list_size = 0
