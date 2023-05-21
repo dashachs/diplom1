@@ -13,8 +13,10 @@ finished_counter = new Proxy({}, {
         if (value === 0) {
           console.log("DA");
           // Вызов функции для запуска выстрела конфетти
-          document.getElementById('game').style.display = 'none';
-          // document.getElementById('canvas').style.display = 'none';
+          gameElement = document.getElementById('game');
+          setTimeout(function() {
+          gameElement.style.animation = 'fadeOut 5s forwards';
+        }, 1500); // Задержка в 5 секунд перед скрытием элемента
           startConfetti();
         }
     }
@@ -378,7 +380,7 @@ document.addEventListener('click', function(event) {
 });
 
 
-function startConfetti() {
+/*function start_сonfetti() {
   var confettiContainer = document.getElementById('confetti-container');
 
   // Массив доступных цветов конфетти
@@ -409,4 +411,4 @@ function startConfetti() {
   setTimeout(function() {
     confettiContainer.innerHTML = '';
   }, 8000); // Измените значение 5000 на желаемую продолжительность в миллисекундах (например, 3000 для 3 секунд)
-}
+}*/
