@@ -1,20 +1,34 @@
-// Импорт нового скрипта
-// import './flask_axaj.js';
-
-let n;
+let levels;
 let lives_count; // Ваша переменная lives_count
 var sizeFormSubmitted = false; // Переменная для отслеживания отправки формы
 var livesFormSubmitted = false; // Переменная для отслеживания отправки формы
+// let finished_counter.watch;
+
+
+finished_counter = new Proxy({}, {
+    set: function(target, property, value) {
+        // do something
+        console.log("finished_counter.watch value changed /from " + target[property] + " to " + value);
+        target[property] = value;
+        if (value === 0) {
+          console.log("DA");
+          // Вызов функции для запуска выстрела конфетти
+          document.getElementById('game').style.display = 'none';
+          // document.getElementById('canvas').style.display = 'none';
+          startConfetti();
+        }
+    }
+});
 
 document.getElementById('size-form').addEventListener('submit', function(event) {
   event.preventDefault(); // Предотвращение стандартного поведения формы
 
   var numberInput = document.getElementById('canvas-size-button');
-  n = parseInt(numberInput.value);
+  levels = parseInt(numberInput.value);
 
-  console.log(n);
+  console.log(levels);
 
-  if (n >= 3 && n <= 9) {
+  if (levels >= 3 && levels <= 9) {
     // Введенное число находится в требуемом диапазоне
     // Выполните вашу логику
 
@@ -46,7 +60,7 @@ function showLivesForm() {
       document.getElementById('start-page').style.display = 'flex';
 
       var confirmationText = document.querySelector('.confirmation-text');
-      confirmationText.textContent = 'Вы хотите запустить игру с ' + n + ' уровнями и ' + lives_count + ' жизнями?';
+      confirmationText.textContent = 'Вы хотите запустить игру с ' + levels + ' уровнями и ' + lives_count + ' жизнями?';
 
       startButton();
   });
@@ -106,22 +120,24 @@ function continueExecution() {
     this.clicked = false;
     this.correct = false;
     this.new = true;
+    this.new_green = true;
   }
 
 // определяем количество кругов
 // const n = 5;
-  let finished_counter = n;
+  finished_counter.watch = levels;
+
 
 // определяем массив объектов, представляющих круги
   const circles = [];
 // circles.push(new Circle(100, 100, 40, `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`));
   circles.push(new Circle(100, 100, 40, '#a08679'));
-  for (let i = 1; i < n - 1; i++) {
+  for (let i = 1; i < levels - 1; i++) {
     let x, y;
     do {
       x = Math.floor(Math.random() * (width - 200)) + 100;
-      if (x - circles[i - 1].x >= (width - 100) / n * 2) {
-        x /= ((width - 100) / n) + 10;
+      if (x - circles[i - 1].x >= (width - 100) / levels * 2) {
+        x /= ((width - 100) / levels) + 10;
       }
       if (x <= circles[i - 1].x + 30) {
         x += 30;
@@ -311,7 +327,11 @@ function continueExecution() {
                         context.lineWidth = 7;
                         context.strokeStyle = '#26580f';
                         context.stroke();
-                        finished_counter--;
+                        if (circle.new_green) {
+                          finished_counter.watch--;
+                        }
+                        circle.new = false;
+                        circle.new_green = false;
                       }
                       popupWindow.style.display = 'none'; // Закрыть окно
                     },
@@ -356,3 +376,37 @@ document.addEventListener('click', function(event) {
     popupWindow.style.display = 'none';
   }
 });
+
+
+function startConfetti() {
+  var confettiContainer = document.getElementById('confetti-container');
+
+  // Массив доступных цветов конфетти
+  var colors = [
+    '#FF355E', '#FD5B78', '#FF6037', '#FF9966', '#FFCC33', '#FFFF66', '#CCFF00', '#66FF66',
+    '#AAF0D1', '#50BFE6', '#FF6EFF', '#EE34D2', '#FF00CC'
+  ];
+
+  // Создаем элементы конфетти и добавляем их в контейнер
+  for (var i = 0; i < 150; i++) {
+    var confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.top = Math.random() * 100 + 'vh'; // Добавляем случайное значение для вертикальной позиции
+    confetti.style.animationDelay = Math.random() * 2 + 's';
+    // Выбираем случайный цвет из массива цветов
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+    // Изменяем размер конфетти
+    var size = Math.random() * 20 + 10; // Размер от 10px до 30px
+    confetti.style.width = size + 'px';
+    confetti.style.height = size + 'px';
+
+    confettiContainer.appendChild(confetti);
+  }
+
+  // Устанавливаем таймер, чтобы удалить конфетти через несколько секунд
+  setTimeout(function() {
+    confettiContainer.innerHTML = '';
+  }, 8000); // Измените значение 5000 на желаемую продолжительность в миллисекундах (например, 3000 для 3 секунд)
+}

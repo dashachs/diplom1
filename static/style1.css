@@ -1,6 +1,31 @@
 body {
   background-image: url("/static/src/images/bg1.svg");
+  /*background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1023%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='rgba(232%2c 255%2c 197%2c 1)'%3e%3c/rect%3e%3cpath d='M1483.4119325229822 402.24799796768656L1388.88288119215 256.68602376070777 1243.3209069851712 351.2150750915399 1337.8499583160033 496.7770492985187z' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M79.38239565435036 582.3640634812764L221.72895504902328 489.92312694483536 129.28801851258228 347.57656755016245-13.058540882090654 440.0175040866035z' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M654.631%2c529.059C752.473%2c525.297%2c824.729%2c448.728%2c873.119%2c363.607C920.808%2c279.72%2c947.773%2c179.613%2c901.389%2c94.997C853.494%2c7.625%2c754.218%2c-31.773%2c654.631%2c-34.966C548.181%2c-38.379%2c433.603%2c-13.112%2c378.852%2c78.242C322.93%2c171.55%2c348.198%2c288.811%2c404.965%2c381.608C459.022%2c469.976%2c551.116%2c533.039%2c654.631%2c529.059' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1193.1587076914009 254.6636401115615L1011.940512381602 381.55398652824215 1138.8308587982826 562.772181838041 1320.0490541080815 435.88183542136034z' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1602.8972305862333 776.5659296140014L1804.2344937027779 1016.5103362562289 2044.1789003450053 815.1730731396844 1842.8416372284607 575.228666497457z' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1151.0788489256468 601.7438780995612L1356.7832998177055 702.0726424126642 1457.1120641308084 496.36819152060536 1251.4076132387497 396.03942720750246z' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1462.6948607182414 359.3996762463226L1257.5415996203055 550.7081871904865 1448.8501105644696 755.8614482884223 1654.0033716624052 564.5529373442585z' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1760.514%2c957.575C1833.275%2c956.005%2c1883.431%2c895.729%2c1922.904%2c834.586C1967.602%2c765.35%2c2024.785%2c683.414%2c1983.588%2c612.039C1942.387%2c540.658%2c1842.912%2c551.445%2c1760.514%2c553.244C1682.732%2c554.942%2c1594.031%2c554.896%2c1553.694%2c621.423C1512.438%2c689.466%2c1543.817%2c774.093%2c1585.515%2c841.866C1624.791%2c905.703%2c1685.579%2c959.192%2c1760.514%2c957.575' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M141.22295705676987 894.6008230815565L302.8808679924931 815.7549917187267 224.03503662966324 654.0970807830035 62.377125693940044 732.9429121458334z' fill='rgba(166%2c 223%2c 101%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1023'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");*/
   background-size: cover;
+}
+
+/*.confetti {*/
+/*  position: fixed;*/
+/*  width: 10px;*/
+/*  height: 10px;*/
+/*  background-color: #f00;*/
+/*  border-radius: 50%;*/
+/*  z-index: 9999;*/
+/*}*/
+
+@keyframes confettiAnimation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(200vw, 200vh, 0);
+  }
+}
+
+.confetti {
+  position: fixed;
+  animation: confettiAnimation 4s linear infinite;
+  border-radius: 50%;
 }
 
 .game {
@@ -30,9 +55,12 @@ body {
 
 .change-text {
   font-size: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
   color: #125634;
   font-weight: bold;
   text-align: center;
+  line-height: 1;
 }
 
 .lives-text {
@@ -78,7 +106,7 @@ body {
 #change-button:hover {
   border: 4px solid #924946;
   background-color: #c8676e;
-  color: #ffcccc;
+  color: #ffdddd;
   font-weight: bold;
 }
 
@@ -108,7 +136,7 @@ body {
 #settings-text {
   display: flex;
   justify-content: center;
-  width: 80%;
+  width: 70%;
   margin-bottom: 10px;
 }
 
