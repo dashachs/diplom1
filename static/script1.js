@@ -40,49 +40,29 @@ function showLivesForm() {
     lives_count = parseInt(numberInput.value);
 
     console.log(lives_count);
-
-    if (n >= 3 && n <= 10) {
-      // Введенное число находится в требуемом диапазоне
-      // Выполните вашу логику
-
       livesFormSubmitted = true; // Устанавливаем флаг отправки формы
-      continueExecution(); // Вызываем функцию для продолжения выполнения кода
-      // startButton();
-    } else {
-      // Введенное число не находится в требуемом диапазоне
-      // Показать сообщение об ошибке или выполнить другие действия
-    }
+
+      document.getElementById('settings').style.display = 'none';
+      document.getElementById('start-page').style.display = 'flex';
+
+      var confirmationText = document.querySelector('.confirmation-text');
+      confirmationText.textContent = 'Вы хотите запустить игру с ' + n + ' уровнями и ' + lives_count + ' жизнями?';
+
+      startButton();
   });
 }
 
-// function startButton {
-//   document.getElementById('lives-form').addEventListener('submit', function(event) {
-//     event.preventDefault(); // Предотвращение стандартного поведения формы
-//
-//     var numberInput = document.getElementById('lives-count-button');
-//     lives_count = parseInt(numberInput.value);
-//
-//     console.log(lives_count);
-//
-//     if (n >= 3 && n <= 10) {
-//       // Введенное число находится в требуемом диапазоне
-//       // Выполните вашу логику
-//
-//       livesFormSubmitted = true; // Устанавливаем флаг отправки формы
-//       continueExecution(); // Вызываем функцию для продолжения выполнения кода
-//     } else {
-//       // Введенное число не находится в требуемом диапазоне
-//       // Показать сообщение об ошибке или выполнить другие действия
-//     }
-//     // if (n >= 3 && n <= 9) {
-//     //   // Введенное число находится в требуемом диапазоне
-//     //   // Выполните вашу логику
-//     // } else {
-//     //   // Введенное число не находится в требуемом диапазоне
-//     //   // Показать сообщение об ошибке или выполнить другие действия
-//     // }
-//   });
-// }
+function startButton() {
+  document.getElementById('start-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Предотвращение стандартного поведения формы
+    continueExecution(); // Вызываем функцию для продолжения выполнения кода
+  });
+
+  document.getElementById('change-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Предотвращение стандартного поведения формы
+    location.reload(); // Вызываем функцию для перезагрузки
+  });
+}
 
 function continueExecution() {
   if (!sizeFormSubmitted || !livesFormSubmitted) {
@@ -90,7 +70,7 @@ function continueExecution() {
     return;
   }
 
-  document.getElementById('settings').style.display = 'none';
+  document.getElementById('start-page').style.display = 'none';
   document.getElementById('game').style.display = 'block';
 
 // определяем размеры канваса
