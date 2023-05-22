@@ -122,6 +122,14 @@ body {
   position: relative;
 }
 
+#start-button:hover {
+  border: 4px solid #125634;
+  /*background-color: #548d50;*/
+  background-color: #548c2f;
+  color: #eff4ec;
+  font-weight: bold;
+}
+
 .change-button {
   display: flex;
   margin-top: 10px;
@@ -157,12 +165,129 @@ body {
   text-align: center;
 }
 
-#start-button:hover {
-  border: 4px solid #125634;
-  /*background-color: #548d50;*/
-  background-color: #548c2f;
-  color: #eff4ec;
+.game-over {
+  display: none;
+  flex-wrap: wrap;
+  position: absolute;
+  height: 40%;
+  width: 40%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; /* Убедитесь, что значение z-index достаточно высокое */
+  /*background-color: #e2ebddaa; !* Прозрачный фон *!*/
+  background-color: rgba(83, 117, 67, 0.8); /* Прозрачный фон */
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.finish {
+  display: none;
+  flex-wrap: wrap;
+  position: absolute;
+  height: 40%;
+  width: 40%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; /* Убедитесь, что значение z-index достаточно высокое */
+  /*background-color: #e2ebddaa; !* Прозрачный фон *!*/
+  background-color: rgba(150, 224, 114, 0.7); /* Прозрачный фон */
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.fade-in {
+  animation: fadeIn 5s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.game-over-text {
+  /*display: flex;*/
+  font-size: 30px;
+  color: #dad7cd;
   font-weight: bold;
+  text-align: center;
+  width: 80%;
+  line-height: 1;
+}
+
+.retry-button {
+  display: flex;
+  margin-top: 15px;
+  background-color: #a3b18a;
+  border: 4px solid #718355;
+  color: #333d29;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  position: relative;
+}
+
+.retry-button:hover {
+  background-color: rgba(150, 224, 114, 1);
+  border: 4px solid #548c2f;
+  color: #125634;
+  font-weight: bold;
+}
+
+.retry-button > p {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+.finish-text {
+  /*display: flex;*/
+  font-size: 30px;
+  color: #dad7cd;
+  font-weight: bold;
+  text-align: center;
+  width: 80%;
+  line-height: 1;
+}
+
+.finish-button {
+  display: flex;
+  margin-top: 15px;
+  background-color: rgba(150, 224, 114, 1);
+  border: 4px solid #548c2f;
+  color: #125634;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  position: relative;
+}
+
+.finish-button:hover {
+  border: 4px solid rgba(150, 224, 114, 1);
+  background-color: #125634;
+  color: #dad7cd;
+  font-weight: bold;
+}
+
+.finish-button > p {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
 }
 
 #settings-text {
@@ -216,7 +341,7 @@ body {
 }
 
 #canvas {
-  background-image: url("/static/src/images/191259-voir-le-vecteur-de-haut-niveau-de-golf-vectoriel.jpg");
+  background-image: url("/static/src/images/main-bg.jpg");
   background-size: cover;
   background-position-y: 39%;
   /*border: 1px solid black;*/

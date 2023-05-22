@@ -32,6 +32,15 @@ var removeConfetti; //call to stop the confetti animation and remove all confett
           gameElement.style.display = 'none';
         }, 5000); // Задержка в 5 секунд перед скрытием элемента
           // gameElement.style.display = 'none';
+
+
+          setTimeout(function() {
+          	let finishElement = document.getElementById('finish')
+          	finishElement.style.animation = 'fadeIn 3s forwards';
+          	document.getElementById('finish').style.display = "flex";
+		}, 1500); // Задержка в 5 секунд перед скрытием элемента
+
+
 		var width = window.innerWidth - 2;
 		var height = window.innerHeight - 2;
 // 		var width = document.documentElement.clientWidth;
