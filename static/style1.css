@@ -199,7 +199,7 @@ body {
   right: 0;
   z-index: 9999; /* Убедитесь, что значение z-index достаточно высокое */
   /*background-color: #e2ebddaa; !* Прозрачный фон *!*/
-  background-color: rgba(150, 224, 114, 0.7); /* Прозрачный фон */
+  background-color: #7cb518cc; /* Прозрачный фон */
   border-radius: 15px;
   justify-content: center;
   align-items: center;
