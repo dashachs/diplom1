@@ -343,6 +343,11 @@ function continueExecution() {
                   var value1 = $('#input1').val();
                   var value2 = $('#input2').val();
 
+                  if (value1.trim() === '' || value2.trim() === '') {
+                    event.preventDefault(); // Отменяем отправку формы
+                    alert('Пожалуйста, заполните все поля формы');
+  }
+
                   $.ajax({
                     url: '/my-endpoint',
                     type: 'POST',
