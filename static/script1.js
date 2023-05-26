@@ -85,31 +85,48 @@ function retryGame() {
     });
   }
 
-document.getElementById('size-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Предотвращение стандартного поведения формы
+document.getElementById('starting-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Предотвращение стандартного поведения формы
 
-  var numberInput = document.getElementById('canvas-size-button');
-  levels = parseInt(numberInput.value);
+    console.log('start');
 
-  console.log(levels);
+      document.getElementById('start').style.display = 'none';
+      document.getElementById('settings').style.display = 'flex';
+      document.body.style.backgroundImage = "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='2000' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1099%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='url(%23SvgjsLinearGradient1100)'%3e%3c/rect%3e%3cpath d='M774.703433498179 51.49372844325207L603.6681967731533 36.53008416633952 666.7403487202973 300.56476139233433z' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M102.032%2c629.047C160.431%2c629.692%2c220.444%2c610.321%2c250.253%2c560.098C280.588%2c508.988%2c269.248%2c446.558%2c241.558%2c393.968C211.423%2c336.734%2c166.71%2c277.791%2c102.032%2c278.591C38.156%2c279.381%2c-2.503%2c340.498%2c-31.643%2c397.345C-57.685%2c448.147%2c-69.151%2c507.436%2c-40.623%2c556.885C-12.081%2c606.357%2c44.92%2c628.416%2c102.032%2c629.047' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1693.002%2c684.666C1766.315%2c683.744%2c1820.11%2c623.334%2c1855.228%2c558.973C1888.588%2c497.834%2c1898.825%2c426.753%2c1867.738%2c364.428C1832.942%2c294.667%2c1770.959%2c233.487%2c1693.002%2c233.736C1615.354%2c233.984%2c1555.706%2c296.489%2c1520.187%2c365.537C1487.889%2c428.325%2c1489.932%2c501.054%2c1523.554%2c563.143C1559.028%2c628.652%2c1618.511%2c685.602%2c1693.002%2c684.666' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M245.02%2c1098.77C329.279%2c1091.788%2c399.25%2c1041.26%2c442.773%2c968.775C487.864%2c893.677%2c507.896%2c803.738%2c469.418%2c725.046C426.103%2c636.461%2c343.625%2c565.154%2c245.02%2c564.344C145.282%2c563.525%2c65.234%2c635.643%2c14.144%2c721.305C-38.497%2c809.567%2c-72.634%2c919.371%2c-19.011%2c1007.04C33.094%2c1092.228%2c145.501%2c1107.016%2c245.02%2c1098.77' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M585.2420726253604 446.5082430979628L286.1938134631874 325.68490360609616 165.37047397132073 624.7331627682692 464.41873313349373 745.5565022601359z' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1794.076%2c529.529C1834.617%2c528.792%2c1872.694%2c506.381%2c1890.754%2c470.077C1907.23%2c436.957%2c1895.279%2c398.435%2c1874.521%2c367.816C1856.479%2c341.204%2c1826.21%2c328.527%2c1794.076%2c327.477C1759.593%2c326.351%2c1723.846%2c334.035%2c1703.983%2c362.245C1680.905%2c395.021%2c1672.106%2c438.413%2c1691.114%2c473.706C1710.955%2c510.546%2c1752.24%2c530.289%2c1794.076%2c529.529' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1423.528569771493 976.4861078768112L1438.6321886361804 763.4126344028303 1269.399979199356 842.3269096697121z' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M727.8768158393714 171.23540300988384L539.2261877713477 148.0720184784944 516.0628032399583 336.72264654651804 704.713431307982 359.8860310779075z' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M894.7408931730992 1085.6052756601512L1146.8235253092012 1143.8031369555838 1205.0213866046338 891.7205048194817 952.9387544685318 833.522643524049z' fill='rgba(150%2c 224%2c 114%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1099'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='10.94%25' y1='-19.44%25' x2='89.06%25' y2='119.44%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1100'%3e%3cstop stop-color='rgba(193%2c 255%2c 155%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(193%2c 255%2c 155%2c 1)' offset='0.28'%3e%3c/stop%3e%3cstop stop-color='rgba(232%2c 255%2c 197%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e\")"
 
-  if (levels >= 3 && levels <= 9) {
-    // Введенное число находится в требуемом диапазоне
-    // Выполните вашу логику
+      // var confirmationText = document.querySelector('.confirmation-text');
+      // confirmationText.textContent = 'Вы хотите запустить игру с ' + levels + ' уровнями и ' + lives_count.watch + ' жизнями?';
 
-    sizeFormSubmitted = true; // Устанавливаем флаг отправки формы
+      showSizeForm();
+  });
 
-    document.getElementById('size-settings').style.display = 'none';
-    document.getElementById('lives-settings').style.display = 'flex';
-    var sizeText = document.querySelector('.change-text');
-    sizeText.textContent = "Выберите количество жизней (количество ошибок)";
+function showSizeForm() {
+  document.getElementById('size-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Предотвращение стандартного поведения формы
 
-    showLivesForm();
-  } else {
-    // Введенное число не находится в требуемом диапазоне
-    // Показать сообщение об ошибке или выполнить другие действия
-  }
-});
+    var numberInput = document.getElementById('canvas-size-button');
+    levels = parseInt(numberInput.value);
+
+    console.log(levels);
+
+    if (levels >= 3 && levels <= 9) {
+      // Введенное число находится в требуемом диапазоне
+      // Выполните вашу логику
+
+      sizeFormSubmitted = true; // Устанавливаем флаг отправки формы
+
+      document.getElementById('size-settings').style.display = 'none';
+      document.getElementById('lives-settings').style.display = 'flex';
+      var sizeText = document.querySelector('.change-text');
+      sizeText.textContent = "Выберите количество жизней (количество ошибок)";
+
+      showLivesForm();
+    } else {
+      // Введенное число не находится в требуемом диапазоне
+      // Показать сообщение об ошибке или выполнить другие действия
+    }
+  });
+}
 
 function showLivesForm() {
   document.getElementById('lives-form').addEventListener('submit', function(event) {
@@ -301,7 +318,7 @@ function continueExecution() {
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub, "popup-window-text"]);
 
                 // ТАЙМЕР
-                let remainingTime = 15; // Начальное значение времени в секундах
+                let remainingTime = 60; // Начальное значение времени в секундах
                 const countdownElement = document.getElementById('countdown');
                 countdownElement.textContent = remainingTime;
 
@@ -336,6 +353,7 @@ function continueExecution() {
                 }, 1000); // Интервал вызова функции каждую секунду
 
 
+
                 // Обработчик клика на кнопку "Проверить"
                 document.getElementById('submit-button').addEventListener('click', function () {
                   event.preventDefault(); // Предотвращение стандартного поведения формы
@@ -346,7 +364,7 @@ function continueExecution() {
                   if (value1.trim() === '' || value2.trim() === '') {
                     event.preventDefault(); // Отменяем отправку формы
                     alert('Пожалуйста, заполните все поля формы');
-  }
+                  }
 
                   $.ajax({
                     url: '/my-endpoint',
@@ -480,3 +498,4 @@ document.addEventListener('click', function(event) {
     confettiContainer.innerHTML = '';
   }, 8000); // Измените значение 5000 на желаемую продолжительность в миллисекундах (например, 3000 для 3 секунд)
 }*/
+
